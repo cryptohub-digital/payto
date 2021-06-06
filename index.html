@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="The Payto scheme generator to include into the links or redirects.">
+  <title>The Payto Link Generator</title>
+  <meta name="theme-color" content="#9eebcf">
+  <meta name="msapplication-navbutton-color" content="#9eebcf">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#9eebcf">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta property="twitter:site" content="@" />
+  <meta property="og:title" content="The Payto Link Generator" />
+  <meta property="og:description" content="The Payto scheme generator to include into the links or redirects." />
+  <meta property="og:image" content="https://payto.link/images/card-image.png" />
+  <link rel="stylesheet" href="/styles/index.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="manifest" href="/images/site.webmanifest">
+  <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+  <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono:400,600" rel="stylesheet">
+</head>
+<body class="bg-tile light" id="top" itemscope itemtype="http://schema.org/WebPage">
+  <main class="h-100 flex main flex-column">
+  <div class="flex pa3 flex-row justify-between align-items-center w-100">
+  <div class="d-block w-100">
+    <a class="github-button" href="https://github.com/cryptohub-digital/payto" data-icon="octicon-star" data-show-count="true" aria-label="Star mckeever02/paytolink on GitHub">Cool!</a>
+  </div>
+  <div class="d-flex flex-row justify-center w-100 tc">
+    <a class="link f6" href="https://coreblockchain.cc" target="_blank">Send some ores 🔷</a>
+    <span class="mh-3 seperator">&middot;</span>
+    <a class="link f6" href="javascript:alert('Press Ctrl+D or Cmd+D to bookmark this website.');" title="PayTo">Bookmark</a>
+  </div>
+  <div class="d-block w-100 flex flex-row justify-end">
+    <button id="nav-light" class="button-reset bg-transparent b--none pa0 btn-mode" type="button" aria-label="Click to toggle Dark/Light mode">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <g fill="none" fill-rule="evenodd">
+          <path d="M15 21h3v3H6v-3H3v-3H0V6h3V3h3V0h12v3h3v3h3v12h-3v3h-6zm3-3v3z" />
+          <path d="M15 18v3h-3V3h3v3h3v3h3v6h-3v3h-3z" />
+        </g>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="mh2 w-90 center payto-window flex flex-column">
+  <div class="pv3 ph2 ph3-ns flex justify-center items-center w-100 tc relative payto-header">
+    <div class="absolute left-0 flex flex-row pl2 pl3-ns h-100 justify-between items-center">
+      <div class="app-circle dib"></div>
+      <div class="app-circle dib"></div>
+      <div class="app-circle dib"></div>
+    </div>
+    <h1 class="f6 f5-ns ma0 fw6">payto link</h1>
+  </div>
+  <div class="bb payto-compose">
+    <div class="flex flex-row relative items-center justify-center">
+      <label for="asset" class="f5-ns f6 gray-40 fw6 pl2 pl3-ns">Asset:</label>
+      <input id="asset" tabindex="1" name="asset" class="input input-reset tagify pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5" type="text" autofocus placeholder="xcb; btc; eur; usd; …">
+      <div class="mr2 mr3-ns">
+        <a class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm curButton" href="javascript:void(0);" tabindex="4">Currency</a>
+      </div>
+      <div class="mr2 mr3-ns">
+        <a class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-sm idButton" href="javascript:void(0);" tabindex="5">ID</a>
+      </div>
+    </div>
+    <div class="payto-type">
+      <div>
+        <input type="radio" id="wallet" name="type" value="wallet" checked>
+        <label id="label-wallet" class="payto-label" for="wallet"><span></span>Wallet</label>
+      </div>
+      <div>
+        <input type="radio" id="ican" name="type" value="ican">
+        <label id="label-ican" class="payto-label" for="ican"><span></span>ICAN</label>
+      </div>
+      <div>
+        <input type="radio" id="iban" name="type" value="iban">
+        <label id="label-iban" class="payto-label" for="iban"><span></span>IBAN</label>
+      </div>
+      <div>
+        <input type="radio" id="bic" name="type" value="bic">
+        <label id="label-bic" class="payto-label" for="bic"><span></span>BIC</label>
+      </div>
+      <div>
+        <input type="radio" id="upi" name="type" value="upi">
+        <label id="label-upi" class="payto-label" for="upi"><span></span>UPI</label>
+      </div>
+      <div>
+        <input type="radio" id="void" name="type" value="void">
+        <label id="label-void" class="payto-label" for="void"><span></span>Cash</label>
+      </div>
+    </div>
+    <div class="b--black bw1 flex flex-row relative items-center justify-center">
+      <label for="address" class="f5-ns f6 fw7 code gray-40 pl2 pl3-ns"><span id="sendType">Wallet</span>:</label>
+      <input id="address" tabindex="2" name="address" class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5" type="text">
+    </div>
+    <div class="dn curSection">
+      <div class="flex flex-row relative items-center justify-center">
+        <label for="currency" class="f5-ns f6 fw7 code gray-40 pl2 pl3-ns">Currency:</label>
+        <input id="currency" name="currency" tabindex="6" class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5" type="text" placeholder="Keep blank if default currency">
+      </div>
+    </div>
+    <div class="dn idSection">
+      <div class="flex flex-row relative items-center justify-center">
+        <label for="id" class="f5-ns f7 fw7 code gray-40 pl2 pl3-ns">ID:</label>
+        <input id="id" name="id" tabindex="7" class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5" type="text" placeholder="Identifier for transaction (if any; just internal or smart contract use)">
+      </div>
+    </div>
+    <div class="b--black bw1 flex flex-row relative items-center justify-center">
+      <label for="amount" class="f5-ns f6 fw7 code gray-40 pl2 pl3-ns">Amount:</label>
+      <input id="amount" tabindex="3" name="amount" class="input input-reset pv3 h-100 db w-100 bg-transparent b--none pl2 pl3-ns f5" type="number" min="0">
+    </div>
+  </div>
+</div>
+
+<div class="mh2 w-90 center result-window flex flex-row items-center">
+  <div class="payto-link-container active" id="paytoResult"><strong>payto:</strong><span id="assetLabel" class="label"></span><span id="assetOutput" class="assetOutput"></span><span id="addressLabel" class="label">/</span><span id="addressOutput" class="addressOutput"></span><span id="symbolQuestion" class="label">?</span><span id="amountLabel" class="label">amount=</span><span id="currencyOutput" class="currencyOutput"></span><span id="currencyLabel" class="label">:</span><span id="amountOutput" class="amountOutput"></span><span id="symbolAmp" class="label">&amp;</span><span id="idLabel" class="label">id=</span><span id="idOutput" class="idOutput"></span></div>
+</div>
+
+<div class="mh2 w-90 center action-window flex flex-row">
+  <a class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-lg btn-act selLink" href="javascript:void(0);">Select link</a>
+  <a class="f5-ns f7 fw6 br2 ph2 tdn tc pv2 dib btn-lg btn-act nextButton" href="javascript:void(0);">Next payment</a>
+</div>
+
+</main>
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
+  <script src="/scripts/index.js"></script>
+</body>
+</html>
