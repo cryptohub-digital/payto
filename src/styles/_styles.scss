@@ -1,18 +1,3 @@
-
-// Converted Variables
-
-
-// Custom Media Query Variables
-
-
-/*
-
-  STYLES
-
-  Add custom styles here.
-
-*/
-
 @keyframes slideIn {
   0% {
     transform: translateY(200px);
@@ -48,10 +33,7 @@
 
 html, body {
   height: 100%;
-}
-
-html, body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 body, input, textarea {
@@ -59,7 +41,30 @@ body, input, textarea {
   font-style: normal;
 }
 
-.email-body {
+label {
+  cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"] + label span {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: -3px 5px 0 0;
+  vertical-align: middle;
+  background-color: #95959591;
+  border: 3px #737373a1 solid;
+  border-radius: 10px;
+}
+
+input[type="radio"]:checked + label span {
+  background-color: #5bb04e;
+}
+
+.payto-body {
   background-color: $white;
   transition: all $mode-timing ease;
   height: 100%;
@@ -85,10 +90,43 @@ body, input, textarea {
   }
 }
 
+.payto-label {
+  margin-right: 14px;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.payto-type {
+  display: flex;
+  flex-direction: row;
+  margin: .8rem .5rem;
+  font-size: .875rem;
+  color: $gray-40;
+  &> div {
+    margin-right: 12px;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+  @media #{$breakpoint-not-small} {
+    margin: .8rem 1rem;
+    font-size: 1rem;
+  }
+  @media #{$breakpoint-small} {
+    input[type="radio"] + label span {
+      width: 6px;
+      height: 6px;
+      border-radius: 6px;
+    }
+  }
+}
+
 .btn-mode {
   width: 18px;
   height: 18px;
   transition: transform .3s ease;
+  cursor: pointer;
   path:first-of-type {
     fill: $black;
   }
@@ -96,7 +134,7 @@ body, input, textarea {
     fill: $white;
   }
   &:hover {
-    transform: rotate(180deg);
+    transform: scale(1.3);
   }
   &:focus {
     outline: none;
@@ -107,52 +145,10 @@ body, input, textarea {
   }
 }
 
-// .btn-mode-dark {
-//   path:first-of-type {
-//     fill: $white;
-//   }
-//   path:last-of-type {
-//     fill: $black;
-//   }
-// }
-
-// .gh-button {
-//   color: $near-black;
-//   &:hover {
-//     .tooltip {
-//       transform: translateX(0);
-//       visibility: visible;
-//       opacity: 1;
-//     }
-//   }
-// }
-
-// .tooltip {
-//   color: $white;
-//   transition: all $mode-timing ease;
-//   background-color: $near-black;
-//   font-size: $font-size-7;
-//   border-radius: $border-radius-2;
-//   visibility: hidden;
-//   opacity: 0;
-//   transform: translateX(-5px);
-//   &:before {
-//     content: "";
-//     position: absolute;
-//     left: -4px;
-//     top: calc(50% - 4px);
-//     width: 0;
-//     height: 0;
-//     border-top:  4px solid transparent;
-//     border-bottom:  4px solid transparent;
-//     border-right: 4px solid $black;
-//   }
-// }
-
 .btn-sm {
   border: 1px solid $gray-30;
   color: $gray-40;
-  width: 50px;
+  width: 80px;
   text-decoration: none;
   transition: all .1s ease;
   &:hover {
@@ -161,7 +157,21 @@ body, input, textarea {
     border-color: $near-black;
   }
   @media #{$breakpoint-not-small} {
-    width: 60px;
+    width: 100px;
+  }
+}
+.btn-lg {
+  border: 1px solid $gray-30;
+  color: $gray-40;
+  text-decoration: none;
+  transition: all .1s ease;
+  background-color: $white;
+  font-size: 1.2em;
+  cursor: pointer;
+  &:hover {
+    background-color: $near-black;
+    color: $white;
+    border-color: $near-black;
   }
 }
 
@@ -172,14 +182,13 @@ body, input, textarea {
   }
 }
 
-.email-window {
+.payto-window {
   max-width: 67rem;
   border: 1px solid $border-color;
   border-top: 0;
   position: relative;
   border-radius: 0;
   z-index: 99;
-  min-height: 80vh;
   animation: .3s ease 0s 1 slideIn;
   animation-fill-mode: forwards;
   transition: background-color $mode-timing ease;
@@ -222,23 +231,51 @@ body, input, textarea {
   }
 }
 
-.email-window, .email-header, .email-compose, .email-body, .email-window:before, .email-window:after  {
+.action-window {
+  max-width: 67rem;
+  position: relative;
+  margin-top: 1rem;
+  @media #{$breakpoint-not-small} {
+    margin-top: 0.5rem;
+  }
+  @media (min-width: 1921px ) {
+    max-width: 86rem;
+  }
+  @media #{$breakpoint-device} {
+    flex-direction: column;
+  }
+  .btn-act {
+    margin-right: 0.5rem;
+    &:last-child {
+      margin-right: 0;
+    }
+    &.disabled {
+      cursor: not-allowed;
+    }
+    @media #{$breakpoint-device} {
+      width: 100%;
+      margin: 0.2em 0;
+    }
+  }
+}
+
+.payto-window, .result-window, .payto-header, .payto-compose, .payto-body, .payto-window:before, .payto-window:after  {
   background-color: $white;
 }
 
-.email-header {
+.payto-header {
   border-bottom: 1px solid $border-color;
   border-top: 1px solid $border-color;
   transition: all $mode-timing ease;
 }
 
-.email-compose {
+.payto-compose {
   border-color: $border-color;
   transition: all $mode-timing ease;
 }
 
 .app-circle {
-  background-color: $gray-30;
+  background-color: #2b2b2b42;
   transition: background-color $mode-timing ease;
   width: 10px;
   height: 10px;
@@ -246,7 +283,7 @@ body, input, textarea {
   margin-right: 3px;
   @media #{$breakpoint-not-small} {
     margin-right: 8px;
-     width: 12px;
+    width: 12px;
     height: 12px;
   }
 }
@@ -257,13 +294,23 @@ input, textarea {
   }
 }
 
-textarea {
-  resize: none;
+.result-window {
+  max-width: 67rem;
+  position: relative;
+  margin-top: 1rem;
+  border: 1px solid $border-color;
+  padding: 1rem;
+  color: $gray-40;
+  @media #{$breakpoint-not-small} {
+    margin-top: 0.5rem;
+  }
+  @media (min-width: 1921px ) {
+    max-width: 86rem;
+  }
 }
 
 /* purgecss start ignore */
-
-.mailto-link-container {
+.payto-link-container {
   visibility: hidden;
   height: 0;
   width: 0;
@@ -272,7 +319,7 @@ textarea {
   transition: transform .2s ease;
   margin: auto;
   z-index: 200;
-  .mailto-link {
+  .payto-link {
     display: none;
   }
   &.active {
@@ -280,14 +327,14 @@ textarea {
     height: auto;
     width: 100%;
     transform: translateY(0);
-    .mailto-link {
+    .payto-link {
       display: flex;
     }
   }
 }
 /* purgecss end ignore */
 
-.mailto-link {
+.payto-link {
   font-size: $font-size-6;
   transition: all $mode-timing ease;
   background-color: $near-black;
@@ -304,7 +351,7 @@ textarea {
     }
 }
 
-.mailto-text {
+.payto-text {
   width: 100%;
   display: inline-block;
   white-space: nowrap;
@@ -320,7 +367,6 @@ textarea {
   display: inline-block;
   background-color: $light-green;
   transition: all .2s ease;
-  //text-shadow: 0 1px 1px rgba(0,0,0,.1);
   transform: scale(1);
   &:hover, &:focus {
     background-color: darken($light-green, 5%);
@@ -338,7 +384,6 @@ textarea {
   line-height: 40px;
   padding-left: 1rem;
   padding-right: 1rem;
-  // width: 160px;
   white-space: nowrap;
 }
 .bg-tile {
@@ -379,14 +424,14 @@ textarea {
     background-image: url('/images/tile-dark.svg');
     background-color: $black;
   }
-  .email-window, .email-header, .email-compose, .email-body, .email-window:before, .email-window:after  {
+  .payto-window, .result-window, .payto-header, .payto-compose, .payto-body, .payto-window:before, .payto-window:after  {
     background-color: lighten($black, 3%);
     border-color: darken($black, 20%);
   }
-  .email-header {
+  .payto-header {
     color: $white;
   }
-  .mailto-link {
+  .payto-link {
     background-color: $white;
     color: $black;
     box-shadow: none;
@@ -394,6 +439,16 @@ textarea {
   .btn-sm {
     border: 1px solid darken($black, 10%);
     color: $gray-40;
+    &:hover {
+      background-color: $white;
+      color: $near-black;
+      border-color: $white;
+    }
+  }
+  .btn-lg {
+    border: 1px solid darken($black, 10%);
+    color: $gray-40;
+    background-color: lighten($black, 3%);
     &:hover {
       background-color: $white;
       color: $near-black;
@@ -408,7 +463,7 @@ textarea {
       fill: $black;
     }
   }
-  .email-body {
+  .payto-body {
     &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: $white;
     }
@@ -448,7 +503,7 @@ textarea {
     animation: none !important;
     transition: none !important;
   }
-  .email-window {
+  .payto-window {
     &:before {
       content: "";
       top: -6px;
@@ -458,4 +513,14 @@ textarea {
       top: -12px;
     }
   }
+}
+
+/* No number arrows */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
 }

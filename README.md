@@ -1,43 +1,47 @@
-# mailtolink.me
+# Payto link
 
-![mailtolink.me](https://github.com/mckeever02/mailtolink/blob/master/_images/card-image.png)
+> The 'payto' URI Scheme for Payments
 
-A quick and easy way to generate markup for mailto links without having to worry about the annoying formatting.
+The 'payto' Uniform Resource Identifier (URI) scheme for designating targets for payments.
 
-Give it a try! Visit [mailtolink.me](http://mailtolink.me) to see it in action!
+A unified URI scheme for all payment target types allows applications to offer user interactions with URIs that represent payment targets, simplifying the introduction of new payment systems and applications.
 
-By [Michael Mckeever](https://twitter.com/mmckvr)
-
-
-## Getting Started
-
-Install all dependencies using npm:
+## Schema
 
 ```
-$ nvm use
-$ npm install
+payto-URI = "payto:" authority path-abempty [ "?" opts ]
+opts = opt *( "&" opt )
+opt-name = generic-opt / authority-specific-opt
+opt-value = *pchar
+opt = opt-name "=" opt-value
+generic-opt = "amount" / "receiver-name" / "sender-name" /
+              "message" / "instruction"
+authority-specific-opt = ALPHA *( ALPHA / DIGIT / "-" / "." )
+authority = ALPHA *( ALPHA / DIGIT / "-" / "." )
 ```
 
-### To Develop
+### Generic options
 
 ```
-$ npm run dev
+amount = currency ":" unit [ "." fraction ]
+        currency = 1*ALPHA
+        unit = 1*(DIGIT / ",")
+        fraction = 1*(DIGIT / ",")
 ```
- And in debug mode:
+
+## Start dev server
 
 ```
-$ npm run dev:debug
+npm install
+npm run dev:debug
 ```
 
 You can view the website at the given access URL:
-```
-$ light-server is listening at http://localhost:4000
-```
+
+> light-server is listening at http://localhost:4000
 
 The local url is configured in `.lightserverrc`
 
-### To Build
+## License
 
-```
-npm run build
-```
+[CORE License](LICENSE)

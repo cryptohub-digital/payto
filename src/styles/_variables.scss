@@ -141,7 +141,8 @@ $washed-yellow: #fffceb !default;
 $washed-red: #ffdfdf !default;
 
 // Custom Media Query Variables
-
+$breakpoint-device: 'screen and (max-width: 40em)' !default;
+$breakpoint-small: 'screen and (max-width: calc(30em - 1px))' !default;
 $breakpoint-not-small: 'screen and (min-width: 30em)' !default;
 $breakpoint-medium: 'screen and (min-width: 30em) and (max-width: 60em)' !default;
 $breakpoint-large: 'screen and (min-width: 60em)' !default;

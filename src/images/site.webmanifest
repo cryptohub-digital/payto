@@ -1,6 +1,6 @@
 {
-    "name": "mailtolink",
-    "short_name": "mailtolink",
+    "name": "paytolink",
+    "short_name": "paytolink",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
